@@ -1,0 +1,248 @@
+Use this manual Schedule C worksheet.
+
+Copy it into Word, Excel, or a notebook and fill it in from your bank statements.
+
+# 1) Transaction-by-transaction expense log
+
+| Date | Vendor | Statement Description | Amount Paid | Business Purpose | Business % | Deductible Amount | Schedule C Category | Receipt/Proof | Notes |
+| ---- | ------ | --------------------- | ----------: | ---------------- | ---------: | ----------------: | ------------------- | ------------- | ----- |
+|      |        |                       |             |                  |       100% |                   |                     |               |       |
+|      |        |                       |             |                  |       100% |                   |                     |               |       |
+|      |        |                       |             |                  |       100% |                   |                     |               |       |
+|      |        |                       |             |                  |       100% |                   |                     |               |       |
+|      |        |                       |             |                  |       100% |                   |                     |               |       |
+
+Use this formula:
+
+**Deductible Amount = Amount Paid × Business %**
+
+Examples:
+
+* $120 phone bill × 60% business use = $72 deductible
+* $300 office chair × 100% business use = $300 deductible
+
+# 2) Category guide for Schedule C
+
+Use these labels in your log.
+
+## Common Schedule C categories
+
+**Advertising**
+Business cards, flyers, online ads, website promotion
+
+**Car and truck expenses**
+Business vehicle costs if you are using actual expenses
+
+**Commissions and fees**
+Referral fees, sales commissions, platform commissions
+
+**Contract labor**
+Payments to freelancers or subcontractors
+
+**Insurance**
+Business insurance only
+
+**Interest**
+Business loan interest, business credit card interest
+
+**Legal and professional services**
+Lawyer, accountant, tax preparer for business return, bookkeeping
+
+**Office expense**
+Postage, office admin expenses, routine office items
+
+**Rent or lease**
+Office rent, equipment lease
+
+**Repairs and maintenance**
+Repair of business equipment or business property
+
+**Supplies**
+Paper, toner, packaging, small consumable items
+
+**Taxes and licenses**
+Business license, permit fees, payroll taxes paid by employer
+
+**Travel**
+Hotels, airfare, business trips away from home
+
+**Meals**
+Business meals, only deductible portion
+
+**Utilities**
+Business phone, business internet, business electricity
+
+**Other expenses**
+Software, bank fees, merchant fees, domain names, cloud storage, education related to current business
+
+# 3) Simple rules for classifying bank statement items
+
+## Usually easy to place
+
+* Office Depot, Staples → Supplies or Office expense
+* Adobe, Microsoft, QuickBooks, Zoom → Other expenses or Office expense
+* Bank monthly fee → Other expenses
+* Stripe, Square, PayPal fees → Other expenses
+* Attorney or CPA payment → Legal and professional services
+* Business license fee → Taxes and licenses
+* Facebook Ads, Google Ads → Advertising
+
+## Needs more review
+
+* Amazon, Walmart, Target → depends on what you bought
+* Gas stations → vehicle expense only if business driving
+* Restaurants → meals only if business-related
+* Cell phone bill → prorate business %
+* Internet bill → prorate business %
+* Home utility bill → usually not directly on Schedule C unless tied to home office rules
+* Cash withdrawals → only count if you have solid backup records
+
+## Do not treat as Schedule C expenses
+
+* Personal groceries
+* Personal rent
+* Owner draws
+* Credit card payments themselves
+* Loan principal
+* Federal income tax
+* Personal child support
+* Personal transfers between accounts
+
+# 4) Year-end Schedule C summary sheet
+
+After you finish the transaction log, total each category here.
+
+| Schedule C Category             | Total |
+| ------------------------------- | ----: |
+| Advertising                     |       |
+| Car and truck expenses          |       |
+| Commissions and fees            |       |
+| Contract labor                  |       |
+| Insurance                       |       |
+| Interest                        |       |
+| Legal and professional services |       |
+| Office expense                  |       |
+| Rent or lease                   |       |
+| Repairs and maintenance         |       |
+| Supplies                        |       |
+| Taxes and licenses              |       |
+| Travel                          |       |
+| Meals                           |       |
+| Utilities                       |       |
+| Other expenses                  |       |
+
+# 5) Part V “Other expenses” detail sheet
+
+If you use “Other expenses,” break it out clearly.
+
+| Other Expense Type                    | Total |
+| ------------------------------------- | ----: |
+| Bank fees                             |       |
+| Merchant processing fees              |       |
+| Software subscriptions                |       |
+| Website/domain hosting                |       |
+| Cloud storage                         |       |
+| Education related to current business |       |
+| Dues and subscriptions                |       |
+| Other: ______                         |       |
+| Other: ______                         |       |
+
+# 6) Manual month-by-month method
+
+For each bank statement month:
+
+## Step 1
+
+Go line by line and mark each transaction:
+
+* B = business
+* P = personal
+* S = split
+* N = not deductible
+
+## Step 2
+
+Write only B and S items into the expense log.
+
+## Step 3
+
+For S items, calculate only the business part.
+
+## Step 4
+
+Add each item into the proper category total.
+
+## Step 5
+
+At the end of each month, total the categories.
+
+That way year-end is just adding up 12 monthly sheets.
+
+# 7) Example entries
+
+| Date       | Vendor     | Statement Description | Amount Paid | Business Purpose                           | Business % | Deductible Amount | Schedule C Category | Receipt/Proof | Notes                   |
+| ---------- | ---------- | --------------------- | ----------: | ------------------------------------------ | ---------: | ----------------: | ------------------- | ------------- | ----------------------- |
+| 01/05/2025 | Staples    | DEBIT CARD PURCHASE   |       84.22 | Printer paper and folders for client files |       100% |             84.22 | Supplies            | Yes           | Office supplies         |
+| 01/08/2025 | Verizon    | ACH PAYMENT           |      150.00 | Cell phone used for business calls         |        60% |             90.00 | Utilities           | Yes           | Mixed personal/business |
+| 01/10/2025 | PayPal Fee | TRANSFER FEE          |       18.40 | Merchant processing fee                    |       100% |             18.40 | Other expenses      | Statement     | Payment processing      |
+| 01/14/2025 | Google Ads | GOOGLE*ADS            |      200.00 | Advertising for business                   |       100% |            200.00 | Advertising         | Yes           | Online ads              |
+| 01/18/2025 | Local Cafe | DEBIT PURCHASE        |       32.00 | Met client for business discussion         |        50% |             16.00 | Meals               | Receipt       | Business meal           |
+
+# 8) Special caution areas
+
+## Vehicle
+
+Pick one method and stay consistent:
+
+* standard mileage, or
+* actual expenses
+
+Do not mix them incorrectly.
+
+## Equipment
+
+If you bought a laptop, printer, furniture, or major equipment, do not automatically throw it into supplies. It may need separate treatment.
+
+## Inventory
+
+If you sell products, purchases for resale may belong in cost of goods sold, not regular expenses.
+
+## Mixed accounts
+
+If your personal and business spending are mixed in one bank account, be extra careful to separate personal items out.
+
+# 9) Best manual filing workflow
+
+1. Gather all bank statements
+2. Gather receipts and invoices
+3. Build the transaction log
+4. Total by category
+5. Fill the Schedule C summary sheet
+6. Transfer totals to the tax form
+7. Keep the worksheet with your records
+
+# 10) Fast paper-ledger version
+
+If you do not want a spreadsheet, make one page for each category:
+
+* Advertising
+* Office expense
+* Supplies
+* Utilities
+* Legal and professional
+* Travel
+* Meals
+* Other expenses
+
+Then write:
+
+* date
+* vendor
+* amount
+* purpose
+
+Add the total at the bottom of each page.
+
+That is the old-school manual bookkeeping method.
+
+I can also turn this into a real downloadable Excel-style Schedule C workbook template with formulas and tabs for monthly bank statement entry.
