@@ -1,0 +1,82 @@
+<Page x:Class="HealingTempleLedger.Views.EntitiesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="🏢 Entities">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <StackPanel>
+                <TextBlock Text="🏢 Entities" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{StaticResource AccentBrush}"/>
+                <TextBlock Text="Multi-entity management for consolidated accounting"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            </StackPanel>
+        </Border>
+        <Grid>
+        <DockPanel Margin="24,20">
+            <DockPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="🏢 Entities" FontSize="20" FontWeight="SemiBold"
+                               Foreground="{StaticResource AccentBrush}"/>
+                    <TextBlock Text="Manage corporations, LLCs, trusts, nonprofits, and sole proprietorships"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                </StackPanel>
+                <Button Content="➕ Add Entity" Style="{StaticResource AccentButton}"
+                        HorizontalAlignment="Right" VerticalAlignment="Center" Padding="14,9" Click="AddEntity_Click"/>
+            </DockPanel>
+            <Border DockPanel.Dock="Top" Background="{StaticResource Surface2Brush}" CornerRadius="8"
+                    BorderBrush="{StaticResource AccentBrush}" BorderThickness="1"
+                    Padding="16,12" Margin="0,0,0,12" x:Name="EditPanel" Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/><ColumnDefinition Width="160"/><ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="120"/><ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="0,0,8,0">
+                        <TextBlock Text="Entity Name" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,2"/>
+                        <TextBox x:Name="EntityName"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0,0,8,0">
+                        <TextBlock Text="Type" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,2"/>
+                        <ComboBox x:Name="EntityType">
+                            <ComboBoxItem Content="Corporation"/><ComboBoxItem Content="LLC"/>
+                            <ComboBoxItem Content="Trust"/><ComboBoxItem Content="Nonprofit"/>
+                            <ComboBoxItem Content="Sole Proprietorship"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="0,0,8,0">
+                        <TextBlock Text="EIN" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,2"/>
+                        <TextBox x:Name="EntityEIN"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Margin="0,0,8,0">
+                        <TextBlock Text="State" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,2"/>
+                        <TextBox x:Name="EntityState"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="4" VerticalAlignment="Bottom">
+                        <Button Content="💾 Save" Style="{StaticResource AccentButton}" Click="SaveEntity_Click"/>
+                        <Button Content="✕" Margin="0,4,0,0" Click="CancelEntity_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <DataGrid x:Name="EntityGrid" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="130"/>
+                    <DataGridTextColumn Header="EIN" Binding="{Binding EIN}" Width="110"/>
+                    <DataGridTextColumn Header="State" Binding="{Binding State}" Width="70"/>
+                    <DataGridTextColumn Header="Fiscal Year End" Binding="{Binding FiscalYearEnd}" Width="110"/>
+                    <DataGridTemplateColumn Header="Actions" Width="80" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="🗑" Padding="6,2" Style="{StaticResource DangerButton}"
+                                        Click="DeleteEntity_Click" Tag="{Binding Id}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+
+        </Grid>
+    </DockPanel>
+</Page>

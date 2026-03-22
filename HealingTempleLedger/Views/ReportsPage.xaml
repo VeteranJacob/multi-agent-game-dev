@@ -1,0 +1,77 @@
+<Page x:Class="HealingTempleLedger.Views.ReportsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="📊 Reports">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <StackPanel>
+                <TextBlock Text="📊 Reports" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{StaticResource AccentBrush}"/>
+                <TextBlock Text="Financial summaries and analytical reports"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            </StackPanel>
+        </Border>
+        <Grid>
+        <DockPanel Margin="24,20">
+            <DockPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="📊 Reports" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}"/>
+                    <TextBlock Text="Financial summaries, ledger analysis, and entity reports" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                </StackPanel>
+                <Button Content="🔄 Refresh" Style="{StaticResource AccentButton}" HorizontalAlignment="Right"
+                        VerticalAlignment="Center" Padding="14,9" Click="Refresh_Click"/>
+            </DockPanel>
+            <ScrollViewer>
+                <StackPanel>
+                    <UniformGrid Columns="4" Margin="0,0,0,20">
+                        <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16,12" Margin="0,0,8,0">
+                            <StackPanel>
+                                <TextBlock Text="TOTAL INCOME" FontSize="10" Foreground="{StaticResource TextDimBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                <TextBlock x:Name="RptIncome" Text="$0.00" FontSize="20" FontWeight="Bold" Foreground="{StaticResource SuccessBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16,12" Margin="0,0,8,0">
+                            <StackPanel>
+                                <TextBlock Text="TOTAL EXPENSES" FontSize="10" Foreground="{StaticResource TextDimBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                <TextBlock x:Name="RptExpenses" Text="$0.00" FontSize="20" FontWeight="Bold" Foreground="{StaticResource WarnBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16,12" Margin="0,0,8,0">
+                            <StackPanel>
+                                <TextBlock Text="NET BALANCE" FontSize="10" Foreground="{StaticResource TextDimBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                <TextBlock x:Name="RptNet" Text="$0.00" FontSize="20" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16,12">
+                            <StackPanel>
+                                <TextBlock Text="ENTRIES" FontSize="10" Foreground="{StaticResource TextDimBrush}" FontFamily="{StaticResource MonoFont}"/>
+                                <TextBlock x:Name="RptCount" Text="0" FontSize="20" FontWeight="Bold" Foreground="{StaticResource Accent2Brush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+                    <TextBlock Text="CATEGORY BREAKDOWN" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <DataGrid x:Name="CategoryGrid" IsReadOnly="True" AutoGenerateColumns="False" Height="220" Margin="0,0,0,20">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="*"/>
+                            <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="80"/>
+                            <DataGridTextColumn Header="Total Debit" Binding="{Binding TotalDebit, StringFormat=C2}" Width="120"/>
+                            <DataGridTextColumn Header="Total Credit" Binding="{Binding TotalCredit, StringFormat=C2}" Width="120"/>
+                            <DataGridTextColumn Header="Net" Binding="{Binding Net, StringFormat=C2}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Text="ENTITY SUMMARY" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <DataGrid x:Name="EntitySummaryGrid" IsReadOnly="True" AutoGenerateColumns="False" Height="160">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Entity" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="120"/>
+                            <DataGridTextColumn Header="Net Balance" Binding="{Binding Balance, StringFormat=C2}" Width="140"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+
+        </Grid>
+    </DockPanel>
+</Page>

@@ -1,0 +1,65 @@
+<Page x:Class="HealingTempleLedger.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="⚙ Settings">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <StackPanel>
+                <TextBlock Text="⚙ Settings" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{StaticResource AccentBrush}"/>
+                <TextBlock Text="Configure AI provider, export paths, and application preferences"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            </StackPanel>
+        </Border>
+        <Grid>
+        <ScrollViewer>
+            <StackPanel Margin="28,20" MaxWidth="700">
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="20" Margin="0,0,0,16">
+                    <StackPanel>
+                        <TextBlock Text="AI PROVIDER" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontWeight="Bold" Margin="0,0,0,12"/>
+                        <TextBlock Text="AI Provider" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <ComboBox x:Name="AIProvider" Binding="{Binding AIProvider}" Height="32" Margin="0,0,0,12" SelectionChanged="Provider_Changed">
+                            <ComboBoxItem Content="Claude" Tag="Claude"/>
+                            <ComboBoxItem Content="OpenAI (GPT-4)" Tag="OpenAI"/>
+                            <ComboBoxItem Content="Ollama (Local)" Tag="Ollama"/>
+                            <ComboBoxItem Content="Offline (Built-in)" Tag="Offline"/>
+                        </ComboBox>
+                        <StackPanel x:Name="ClaudePanel">
+                            <TextBlock Text="Anthropic Claude API Key" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                            <TextBox x:Name="ClaudeKey" Height="32" Margin="0,0,0,4"/>
+                            <TextBlock Margin="0,0,0,12">
+                                <Hyperlink NavigateUri="https://console.anthropic.com/api-keys" RequestNavigate="Hyperlink_Navigate">Get free API key at console.anthropic.com</Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="OpenAIPanel" Visibility="Collapsed">
+                            <TextBlock Text="OpenAI API Key" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                            <TextBox x:Name="OpenAIKey" Height="32" Margin="0,0,0,12"/>
+                        </StackPanel>
+                        <StackPanel x:Name="OllamaPanel" Visibility="Collapsed">
+                            <TextBlock Text="Ollama Host URL" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                            <TextBox x:Name="OllamaHost" Height="32" Margin="0,0,0,8"/>
+                            <TextBlock Text="Model Name" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                            <TextBox x:Name="OllamaModel" Height="32" Margin="0,0,0,12"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="20" Margin="0,0,0,16">
+                    <StackPanel>
+                        <TextBlock Text="EXPORT SETTINGS" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontWeight="Bold" Margin="0,0,0,12"/>
+                        <TextBlock Text="Default Export Path" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                            <TextBox x:Name="ExportPath" Height="32" Margin="0,0,8,0"/>
+                            <Button Content="Browse…" Grid.Column="1" Padding="12,6" Click="BrowseExport_Click"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                <Button Content="💾 Save Settings" Style="{StaticResource AccentButton}" Padding="20,12" Click="SaveSettings_Click"/>
+                <TextBlock x:Name="SaveStatus" Text="" Foreground="{StaticResource SuccessBrush}" Margin="0,8,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        </Grid>
+    </DockPanel>
+</Page>

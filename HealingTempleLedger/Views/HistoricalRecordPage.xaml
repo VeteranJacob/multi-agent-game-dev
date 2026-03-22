@@ -1,0 +1,117 @@
+<Page x:Class="HealingTempleLedger.Views.HistoricalRecordPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="Historical Record">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <DockPanel>
+                <StackPanel>
+                    <TextBlock Text="📜 Historical Record" FontSize="20" FontWeight="SemiBold"
+                               Foreground="{StaticResource AccentBrush}"/>
+                    <TextBlock Text="National Emergency Powers in the United States: 1933 — Present"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="12"/>
+                </StackPanel>
+                <Button Content="🖨 Print / Export" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Click="Export_Click"/>
+            </DockPanel>
+        </Border>
+        <ScrollViewer>
+            <StackPanel Margin="28,20" MaxWidth="900">
+
+                <Border Background="{StaticResource Surface2Brush}" CornerRadius="8"
+                        BorderBrush="{StaticResource WarnBrush}" BorderThickness="1"
+                        Padding="16,12" Margin="0,0,0,20">
+                    <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextBrush}" FontSize="13">
+                        <Run FontWeight="Bold" Foreground="{StaticResource WarnBrush}">OFFICIAL RECORD: </Run>
+                        <Run>This page documents the official historical record showing that since March 9, 1933, the United States has operated under declared national emergencies that activated hundreds of federal statutes granting extraordinary powers. Congress itself acknowledged that these statutes, taken together, confer enough authority to </Run>
+                        <Run FontStyle="Italic">"rule the country without reference to normal constitutional processes."</Run>
+                    </TextBlock>
+                </Border>
+
+                <!-- Timeline -->
+                <TextBlock Text="TIMELINE OF EMERGENCY DECLARATIONS" Style="{StaticResource SectionHeader}"
+                           FontFamily="{StaticResource MonoFont}" FontSize="13" FontWeight="Bold"
+                           Foreground="{StaticResource AccentBrush}" Margin="0,0,0,12"/>
+
+                <ItemsControl x:Name="TimelineList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                                    Padding="16,12" Margin="0,0,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Year}" FontSize="22" FontWeight="Bold"
+                                               Foreground="{StaticResource AccentBrush}"
+                                               FontFamily="{StaticResource MonoFont}" VerticalAlignment="Top"/>
+                                    <StackPanel Grid.Column="1" Margin="16,0,0,0">
+                                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold"
+                                                   Foreground="{StaticResource TextBrush}" FontSize="14"/>
+                                        <TextBlock Text="{Binding Proclamation}" Foreground="{StaticResource AccentBrush}"
+                                                   FontSize="11" FontFamily="{StaticResource MonoFont}" Margin="0,2,0,6"/>
+                                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap"
+                                                   Foreground="{StaticResource TextDimBrush}" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Key Findings -->
+                <TextBlock Text="KEY CONGRESSIONAL FINDINGS" Margin="0,20,0,12"
+                           FontFamily="{StaticResource MonoFont}" FontSize="13" FontWeight="Bold"
+                           Foreground="{StaticResource AccentBrush}"/>
+
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20,16" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10" Foreground="{StaticResource TextBrush}">
+                            <Run FontWeight="Bold">Scope of Documented Powers (Senate Special Committee Findings):</Run>
+                        </TextBlock>
+                        <ItemsControl x:Name="PowersList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="0,3" Foreground="{StaticResource TextBrush}" TextWrapping="Wrap">
+                                        <Run Foreground="{StaticResource AccentBrush}">▸  </Run>
+                                        <Run Text="{Binding}"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+
+                <!-- NEA Analysis -->
+                <TextBlock Text="NATIONAL EMERGENCIES ACT ANALYSIS (1976)" Margin="0,0,0,12"
+                           FontFamily="{StaticResource MonoFont}" FontSize="13" FontWeight="Bold"
+                           Foreground="{StaticResource AccentBrush}"/>
+
+                <ItemsControl x:Name="NEAList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                                    Padding="16,12" Margin="0,0,0,8">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Title}" FontWeight="SemiBold"
+                                               Foreground="{StaticResource Accent2Brush}" Margin="0,0,0,6"/>
+                                    <TextBlock Text="{Binding Content}" TextWrapping="Wrap"
+                                               Foreground="{StaticResource TextDimBrush}" FontSize="12"/>
+                                    <TextBlock Text="{Binding Citation}" FontFamily="{StaticResource MonoFont}"
+                                               FontSize="10" Foreground="{StaticResource AccentBrush}" Margin="0,6,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Page>

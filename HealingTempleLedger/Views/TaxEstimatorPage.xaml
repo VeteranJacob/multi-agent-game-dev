@@ -1,0 +1,104 @@
+<Page x:Class="HealingTempleLedger.Views.TaxEstimatorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="🧮 Tax Estimator">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <StackPanel>
+                <TextBlock Text="🧮 Tax Estimator" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{StaticResource AccentBrush}"/>
+                <TextBlock Text="Estimate quarterly and annual tax obligations"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            </StackPanel>
+        </Border>
+        <Grid>
+        <ScrollViewer>
+            <StackPanel Margin="28,20" MaxWidth="750">
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="20" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock Text="TAXPAYER INFORMATION" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontWeight="Bold" Margin="0,0,0,12"/>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+                            <StackPanel Margin="0,0,8,0">
+                                <TextBlock Text="Tax Year" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                                <ComboBox x:Name="TaxYear" Height="32">
+                                    <ComboBoxItem Content="2025"/><ComboBoxItem Content="2024" IsSelected="True"/>
+                                    <ComboBoxItem Content="2023"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Filing Status" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                                <ComboBox x:Name="FilingStatus" Height="32">
+                                    <ComboBoxItem Content="Single" IsSelected="True"/>
+                                    <ComboBoxItem Content="Married Filing Jointly"/>
+                                    <ComboBoxItem Content="Head of Household"/>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Text="Expected Adjusted Gross Income" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="AGI" Text="0.00" Height="32" Margin="0,0,0,12"/>
+                        <TextBlock Text="Self-Employment Income (for SE tax)" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="SEIncome" Text="0.00" Height="32" Margin="0,0,0,12"/>
+                        <TextBlock Text="Expected Federal Withholding" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="Withholding" Text="0.00" Height="32" Margin="0,0,0,16"/>
+                        <Button Content="🧮 Calculate Estimated Tax" Style="{StaticResource AccentButton}" Padding="16,10" Click="Calculate_Click"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource AccentBrush}" BorderThickness="1" Padding="20" x:Name="ResultsPanel" Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock Text="ESTIMATED TAX RESULTS" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontWeight="Bold" Margin="0,0,0,16"/>
+                        <UniformGrid Columns="2">
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Standard Deduction" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="StdDeduction" Text="$0.00" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Taxable Income" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="TaxableIncome" Text="$0.00" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Federal Income Tax" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="FedTax" Text="$0.00" FontSize="16" FontWeight="Bold" Foreground="{StaticResource WarnBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Self-Employment Tax (15.3%)" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="SETax" Text="$0.00" FontSize="16" FontWeight="Bold" Foreground="{StaticResource WarnBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,12">
+                                <TextBlock Text="Less: Withholding" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="WithholdingResult" Text="$0.00" FontSize="16" FontWeight="Bold" Foreground="{StaticResource SuccessBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="Amount Due / (Refund)" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="AmountDue" Text="$0.00" FontSize="20" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                        </UniformGrid>
+                        <Separator Margin="0,12"/>
+                        <TextBlock Text="QUARTERLY ESTIMATED PAYMENTS (25% each)" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <UniformGrid Columns="4">
+                            <StackPanel Margin="0,0,8,0">
+                                <TextBlock Text="Q1 — April 15" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="Q1" Text="$0.00" FontSize="15" FontWeight="Bold" Foreground="{StaticResource TextBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,8,0">
+                                <TextBlock Text="Q2 — June 17" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="Q2" Text="$0.00" FontSize="15" FontWeight="Bold" Foreground="{StaticResource TextBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,8,0">
+                                <TextBlock Text="Q3 — Sept 16" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="Q3" Text="$0.00" FontSize="15" FontWeight="Bold" Foreground="{StaticResource TextBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="Q4 — Jan 15" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                <TextBlock x:Name="Q4" Text="$0.00" FontSize="15" FontWeight="Bold" Foreground="{StaticResource TextBrush}" FontFamily="{StaticResource MonoFont}"/>
+                            </StackPanel>
+                        </UniformGrid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        </Grid>
+    </DockPanel>
+</Page>

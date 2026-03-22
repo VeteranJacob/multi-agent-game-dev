@@ -1,0 +1,54 @@
+<Page x:Class="HealingTempleLedger.Views.AIHumanizerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="✍ AI Humanizer">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <StackPanel>
+                <TextBlock Text="✍ AI Humanizer" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{StaticResource AccentBrush}"/>
+                <TextBlock Text="Make AI-generated text sound natural and human"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            </StackPanel>
+        </Border>
+        <Grid>
+        <DockPanel Margin="24,20">
+            <DockPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="✍ AI Humanizer" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}"/>
+                    <TextBlock Text="Paste AI-generated text and get a natural, human-sounding rewrite" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                </StackPanel>
+            </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="12"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16">
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Top" Text="INPUT — AI TEXT" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="✍ Humanize" Style="{StaticResource AccentButton}" Padding="16,10" Click="Humanize_Click"/>
+                            <Button Content="🗑 Clear" Margin="8,0,0,0" Padding="12,10" Click="ClearInput_Click"/>
+                        </StackPanel>
+                        <TextBox x:Name="InputText" TextWrapping="Wrap" AcceptsReturn="True"
+                                 VerticalScrollBarVisibility="Auto" FontSize="13"
+                                 Text="Paste your AI-generated text here..."/>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Column="2" Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16">
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Top" Text="OUTPUT — HUMANIZED TEXT" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="📋 Copy" Padding="12,10" Click="CopyOutput_Click"/>
+                            <Button Content="💾 Export" Margin="8,0,0,0" Padding="12,10" Click="ExportOutput_Click"/>
+                        </StackPanel>
+                        <TextBox x:Name="OutputText" TextWrapping="Wrap" AcceptsReturn="True"
+                                 VerticalScrollBarVisibility="Auto" FontSize="13" IsReadOnly="False"
+                                 Text="Humanized output will appear here..."/>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </DockPanel>
+
+        </Grid>
+    </DockPanel>
+</Page>

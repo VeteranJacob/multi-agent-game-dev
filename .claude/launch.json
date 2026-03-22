@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "HealingTempleLedger (run)",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "HealingTempleLedger/HealingTempleLedger.csproj"],
+      "port": 0
+    },
+    {
+      "name": "HealingTempleLedger (watch)",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["watch", "run", "--project", "HealingTempleLedger/HealingTempleLedger.csproj"],
+      "port": 0
+    },
+    {
+      "name": "Game Dev Agents - Orchestrator",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "pip install -r game-dev-agents/requirements.txt -q && python game-dev-agents/orchestrator.py"],
+      "port": 0
+    },
+    {
+      "name": "Game Dev Agents - Demo",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "pip install -r game-dev-agents/requirements.txt -q && python game-dev-agents/demo.py"],
+      "port": 0
+    }
+  ]
+}

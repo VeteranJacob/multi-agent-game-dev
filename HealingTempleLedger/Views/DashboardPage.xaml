@@ -1,0 +1,138 @@
+<Page x:Class="HealingTempleLedger.Views.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}"
+      Title="Dashboard">
+    <ScrollViewer>
+        <StackPanel Margin="32,28">
+
+            <!-- Header -->
+            <TextBlock Text="⚖ Healing Temple Ledger" FontSize="28" FontWeight="Bold"
+                       Foreground="{StaticResource AccentBrush}"
+                       FontFamily="{StaticResource MonoFont}"/>
+            <TextBlock Text="Lawful Self-Governance · GAAPCLAW Ledger · Multi-Agent AI Suite"
+                       Foreground="{StaticResource TextDimBrush}" FontSize="13" Margin="0,4,0,24"/>
+
+            <!-- Stats Row -->
+            <UniformGrid Columns="4" Margin="0,0,0,24">
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20,16" Margin="0,0,12,0">
+                    <StackPanel>
+                        <TextBlock Text="📒 Ledger Entries" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                        <TextBlock x:Name="LedgerCount" Text="—" Foreground="{StaticResource AccentBrush}"
+                                   FontSize="28" FontFamily="{StaticResource MonoFont}" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20,16" Margin="0,0,12,0">
+                    <StackPanel>
+                        <TextBlock Text="🏢 Entities" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                        <TextBlock x:Name="EntityCount" Text="—" Foreground="{StaticResource Accent2Brush}"
+                                   FontSize="28" FontFamily="{StaticResource MonoFont}" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20,16" Margin="0,0,12,0">
+                    <StackPanel>
+                        <TextBlock Text="📋 Chart of Accounts" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                        <TextBlock x:Name="AccountCount" Text="—" Foreground="{StaticResource WarnBrush}"
+                                   FontSize="28" FontFamily="{StaticResource MonoFont}" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20,16">
+                    <StackPanel>
+                        <TextBlock Text="💰 Net Balance" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                        <TextBlock x:Name="NetBalance" Text="—" Foreground="{StaticResource SuccessBrush}"
+                                   FontSize="22" FontFamily="{StaticResource MonoFont}" FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <!-- Quick Launch -->
+            <TextBlock Text="Quick Launch" Foreground="{StaticResource TextDimBrush}"
+                       FontSize="11" FontFamily="{StaticResource MonoFont}"
+                       TextTransform="Uppercase" Margin="0,0,0,10"/>
+            <UniformGrid Columns="3" Margin="0,0,0,24">
+                <Button Content="📒  Open General Ledger" Style="{StaticResource AccentButton}"
+                        Margin="0,0,8,8" Padding="14,10" Click="GoLedger_Click"/>
+                <Button Content="🤖  Open AI Agent Chat" Margin="0,0,8,8" Padding="14,10" Click="GoAI_Click"/>
+                <Button Content="📜  Historical Record" Margin="0,0,0,8" Padding="14,10" Click="GoHistory_Click"/>
+                <Button Content="👤  Form 1040" Margin="0,0,8,8" Padding="14,10" Click="GoForm1040_Click"/>
+                <Button Content="🏢  Form 1120 Corporate" Margin="0,0,8,8" Padding="14,10" Click="GoForm1120_Click"/>
+                <Button Content="📊  Reports" Padding="14,10" Click="GoReports_Click"/>
+            </UniformGrid>
+
+            <!-- Feature Grid -->
+            <TextBlock Text="Modules" Foreground="{StaticResource TextDimBrush}"
+                       FontSize="11" FontFamily="{StaticResource MonoFont}"
+                       TextTransform="Uppercase" Margin="0,0,0,10"/>
+            <UniformGrid Columns="2" Margin="0,0,0,24">
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20" Margin="0,0,12,12">
+                    <StackPanel>
+                        <TextBlock Text="⚖ Healing Temple Ledger — Lawful Self-Governance"
+                                   Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" FontSize="12"
+                                   Text="Historical record of U.S. emergency powers since 1933. Petition for Redress framework. Congressional petitions. Emergency Powers documentation. CPSA, PORG, TRCF, DIBE, CCSN, EEEJ, FDRF modules."/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="📒 GAAPCLAW — Universal Accrual Ledger"
+                                   Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" FontSize="12"
+                                   Text="Multi-entity double-entry accounting. General Ledger, Journal, Chart of Accounts. Full IRS Tax Forms: 1040, 1120, 990, 1041, Schedule C. Financial statements. CSV/Excel export."/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20" Margin="0,0,12,0">
+                    <StackPanel>
+                        <TextBlock Text="🤖 AI Multi-Agent System"
+                                   Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" FontSize="12"
+                                   Text="13 specialized AI agents. GAAP advisor, legal research, document creator, AI humanizer. Supports Claude, OpenAI, and local Ollama models. Persistent conversation history."/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="📑 Tax Filing Suite"
+                                   Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" FontSize="12"
+                                   Text="IRS Form 1040 (Individual), 1120 (Corporate), 990 (Nonprofit), 1041 (Trust/Estate), 1040-ES, Schedule C. All forms calculate automatically. Export to Excel."/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <!-- Recent Activity -->
+            <TextBlock Text="Recent Ledger Activity" Foreground="{StaticResource TextDimBrush}"
+                       FontSize="11" FontFamily="{StaticResource MonoFont}"
+                       TextTransform="Uppercase" Margin="0,0,0,10"/>
+            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="10"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="4">
+                <DataGrid x:Name="RecentGrid" Height="180" IsReadOnly="True"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=yyyy-MM-dd}" Width="100"/>
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="130"/>
+                        <DataGridTextColumn Header="Debit" Binding="{Binding Debit, StringFormat=C2}" Width="100"/>
+                        <DataGridTextColumn Header="Credit" Binding="{Binding Credit, StringFormat=C2}" Width="100"/>
+                        <DataGridTextColumn Header="Net" Binding="{Binding Net, StringFormat=C2}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

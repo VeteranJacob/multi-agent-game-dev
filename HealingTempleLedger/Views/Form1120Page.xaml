@@ -1,0 +1,171 @@
+<Page x:Class="HealingTempleLedger.Views.Form1120Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="🏢 Form 1120">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <DockPanel>
+                <StackPanel>
+                    <TextBlock Text="🏢 Form 1120" FontSize="20" FontWeight="SemiBold"
+                               Foreground="{StaticResource AccentBrush}"/>
+                    <TextBlock Text="U.S. Corporation Income Tax Return" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Content="🧮 Calculate" Padding="14,9" Margin="0,0,8,0" Click="Calculate_Click"/>
+                    <Button Content="💾 Save" Style="{StaticResource AccentButton}" Padding="14,9" Margin="0,0,8,0" Click="Save_Click"/>
+                    <Button Content="📊 Export Excel" Padding="14,9" Click="Export_Click"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+        <Border DockPanel.Dock="Bottom" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0" Padding="24,12">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0,0,32,0">
+                    <TextBlock Text="TOTAL INCOME" FontSize="10" Foreground="{StaticResource TextDimBrush}" FontFamily="{StaticResource MonoFont}"/>
+                    <TextBlock x:Name="CalcIncome" Text="—" FontSize="16" FontWeight="Bold" Foreground="{StaticResource SuccessBrush}" FontFamily="{StaticResource MonoFont}"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,32,0">
+                    <TextBlock Text="TOTAL DEDUCTIONS" FontSize="10" Foreground="{StaticResource TextDimBrush}" FontFamily="{StaticResource MonoFont}"/>
+                    <TextBlock x:Name="CalcDeductions" Text="—" FontSize="16" FontWeight="Bold" Foreground="{StaticResource WarnBrush}" FontFamily="{StaticResource MonoFont}"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="TAXABLE INCOME / TAX" FontSize="10" Foreground="{StaticResource TextDimBrush}" FontFamily="{StaticResource MonoFont}"/>
+                    <TextBlock x:Name="CalcTax" Text="—" FontSize="16" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <ScrollViewer>
+            <StackPanel Margin="24,16" MaxWidth="840">
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="16" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="CORPORATE INFORMATION" Foreground="{StaticResource AccentBrush}"
+                                   FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="Corporation Name" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="CorporationName" Height="30" Text="{Binding CorporationName, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="EIN" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="EIN" Height="30" Text="{Binding EIN, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="Address" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="Address" Height="30" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="State/ZIP" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="State" Height="30" Text="{Binding State, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="16" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="INCOME" Foreground="{StaticResource AccentBrush}"
+                                   FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="1a. Gross Receipts/Sales" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="GrossReceipts" Height="30" Text="{Binding GrossReceipts, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="1b. Returns & Allowances" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="ReturnsAllowances" Height="30" Text="{Binding ReturnsAllowances, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="2. Cost of Goods Sold" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="CostOfGoodsSold" Height="30" Text="{Binding CostOfGoodsSold, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="4. Dividends" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="Dividends" Height="30" Text="{Binding Dividends, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="5. Interest" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="Interest" Height="30" Text="{Binding Interest, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="6. Gross Rents" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="GrossRents" Height="30" Text="{Binding GrossRents, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="8. Capital Gain (Net)" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="CapitalGain" Height="30" Text="{Binding CapitalGain, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="10. Other Income" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="OtherIncome" Height="30" Text="{Binding OtherIncome, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="16" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="DEDUCTIONS" Foreground="{StaticResource AccentBrush}"
+                                   FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="12. Compensation of Officers" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="CompensationOfficers" Height="30" Text="{Binding CompensationOfficers, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="13. Salaries & Wages" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="SalariesWages" Height="30" Text="{Binding SalariesWages, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="14. Repairs & Maintenance" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="RepairsMaintenance" Height="30" Text="{Binding RepairsMaintenance, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="16. Rents" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="Rents" Height="30" Text="{Binding Rents, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="17. Taxes & Licenses" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="TaxesLicenses" Height="30" Text="{Binding TaxesLicenses, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="18. Interest Expense" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="InterestExpense" Height="30" Text="{Binding InterestExpense, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="19. Charitable Contributions" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="CharitableContributions" Height="30" Text="{Binding CharitableContributions, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="20. Depreciation" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="Depreciation" Height="30" Text="{Binding Depreciation, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="26. Other Deductions" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="OtherDeductions" Height="30" Text="{Binding OtherDeductions, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                        Padding="16" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="NOL & TAX" Foreground="{StaticResource AccentBrush}"
+                                   FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="29a. NOL Deduction (IRC §172)" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="NOLDeduction" Height="30" Text="{Binding NOLDeduction, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="29b. Special Deductions" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="SpecialDeductions" Height="30" Text="{Binding SpecialDeductions, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="Estimated Tax Payments" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,3"/>
+                        <TextBox x:Name="EstimatedTaxPayments" Height="30" Text="{Binding EstimatedTaxPayments, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Page>

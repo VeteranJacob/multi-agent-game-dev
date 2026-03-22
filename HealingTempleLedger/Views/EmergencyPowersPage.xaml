@@ -1,0 +1,63 @@
+<Page x:Class="HealingTempleLedger.Views.EmergencyPowersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="⚡ Emergency Powers Analysis">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <StackPanel>
+                <TextBlock Text="⚡ Emergency Powers Analysis" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{StaticResource AccentBrush}"/>
+                <TextBlock Text="Statutory analysis of U.S. emergency powers framework"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            </StackPanel>
+        </Border>
+        <Grid>
+        <ScrollViewer>
+            <StackPanel Margin="28,20" MaxWidth="900">
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8"
+                        BorderBrush="{StaticResource WarnBrush}" BorderThickness="1"
+                        Padding="20,14" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock Text="EMERGENCY POWERS — STATUTORY ANALYSIS" FontWeight="Bold"
+                                   Foreground="{StaticResource WarnBrush}" Margin="0,0,0,8"/>
+                        <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextBrush}" FontSize="13">
+Congress documented that under the 1933–1976 emergency framework, the Executive holds authority to seize property, control production, institute martial law, restrict travel, and control communications — powers ordinarily exercised by Congress, delegated through emergency statutes. This page provides the statutory reference index.
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                <TextBlock Text="KEY STATUTES AND CITATIONS" Foreground="{StaticResource AccentBrush}"
+                           FontFamily="{StaticResource MonoFont}" FontWeight="Bold" Margin="0,0,0,12"/>
+                <DataGrid x:Name="StatuteGrid" IsReadOnly="True" Height="300" AutoGenerateColumns="False"
+                          Margin="0,0,0,20">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Statute / Citation" Binding="{Binding Citation}" Width="200"/>
+                        <DataGridTextColumn Header="Year" Binding="{Binding Year}" Width="60"/>
+                        <DataGridTextColumn Header="Authority Granted" Binding="{Binding Authority}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock Text="CRIMINAL CONSPIRACY ELEMENTS — DOCUMENTED RECORD" Foreground="{StaticResource AccentBrush}"
+                           FontFamily="{StaticResource MonoFont}" FontWeight="Bold" Margin="0,0,0,12"/>
+                <ItemsControl x:Name="ElementsList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="6"
+                                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                                    Padding="14,10" Margin="0,0,0,8">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Element}" FontWeight="SemiBold"
+                                               Foreground="{StaticResource Accent2Brush}"/>
+                                    <TextBlock Text="{Binding Finding}" TextWrapping="Wrap"
+                                               Foreground="{StaticResource TextDimBrush}" FontSize="12" Margin="0,4,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+
+        </Grid>
+    </DockPanel>
+</Page>

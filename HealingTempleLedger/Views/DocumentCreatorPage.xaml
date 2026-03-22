@@ -1,0 +1,74 @@
+<Page x:Class="HealingTempleLedger.Views.DocumentCreatorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgBrush}" Title="📄 Document Creator">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="28,16">
+            <StackPanel>
+                <TextBlock Text="📄 Document Creator" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{StaticResource AccentBrush}"/>
+                <TextBlock Text="Draft professional legal and business documents"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            </StackPanel>
+        </Border>
+        <Grid>
+        <DockPanel Margin="24,20">
+            <DockPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="📄 Document Creator" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}"/>
+                    <TextBlock Text="Generate professional legal, business, and redress documents" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                </StackPanel>
+            </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="260"/><ColumnDefinition Width="12"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16">
+                    <StackPanel>
+                        <TextBlock Text="DOCUMENT TYPE" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <ListBox x:Name="DocTypeList" SelectionChanged="DocType_Changed">
+                            <ListBoxItem Tag="dispute">📋 Dispute Letter</ListBoxItem>
+                            <ListBoxItem Tag="demand">⚖ Demand Letter</ListBoxItem>
+                            <ListBoxItem Tag="cease">🛑 Cease and Desist</ListBoxItem>
+                            <ListBoxItem Tag="chargeback">💳 Chargeback Request</ListBoxItem>
+                            <ListBoxItem Tag="refund">💰 Refund Request</ListBoxItem>
+                            <ListBoxItem Tag="complaint">📝 Government Complaint</ListBoxItem>
+                            <ListBoxItem Tag="petition">📜 Petition for Redress</ListBoxItem>
+                            <ListBoxItem Tag="affidavit">📄 Affidavit</ListBoxItem>
+                            <ListBoxItem Tag="declaration">📋 Declaration</ListBoxItem>
+                            <ListBoxItem Tag="notice">📨 Notice of Default</ListBoxItem>
+                            <ListBoxItem Tag="authorization">✍ Authorization Letter</ListBoxItem>
+                            <ListBoxItem Tag="power">🔑 Power of Attorney</ListBoxItem>
+                        </ListBox>
+                        <Separator Margin="0,12"/>
+                        <TextBlock Text="YOUR DETAILS" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <TextBlock Text="Your Name" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="YourName" Height="30" Margin="0,0,0,8"/>
+                        <TextBlock Text="Recipient / Company" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="Recipient" Height="30" Margin="0,0,0,8"/>
+                        <TextBlock Text="Subject / Details" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="Details" Height="80" TextWrapping="Wrap" AcceptsReturn="True"
+                                 VerticalScrollBarVisibility="Auto" Margin="0,0,0,12"/>
+                        <Button Content="📄 Generate Document" Style="{StaticResource AccentButton}" Padding="14,10" Click="Generate_Click"/>
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="2" Background="{StaticResource SurfaceBrush}" CornerRadius="8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16">
+                    <DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Margin="0,0,0,10">
+                            <TextBlock Text="GENERATED DOCUMENT" Foreground="{StaticResource AccentBrush}" FontFamily="{StaticResource MonoFont}" FontSize="11" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="📋 Copy" Padding="10,6" Click="CopyDoc_Click" Margin="0,0,6,0"/>
+                                <Button Content="💾 Export .txt" Padding="10,6" Click="ExportDoc_Click"/>
+                            </StackPanel>
+                        </DockPanel>
+                        <TextBox x:Name="GeneratedDoc" TextWrapping="Wrap" AcceptsReturn="True"
+                                 VerticalScrollBarVisibility="Auto" FontFamily="{StaticResource MonoFont}"
+                                 FontSize="12" IsReadOnly="False"
+                                 Text="Select a document type and click Generate..."/>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </DockPanel>
+
+        </Grid>
+    </DockPanel>
+</Page>
